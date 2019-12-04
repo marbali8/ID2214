@@ -35,24 +35,18 @@ def get_lipinski(df, verbose = True):
 
     return _df
 
-df = pd.read_csv('assignment4/data/training_smiles.csv')
-X_train, X_test, y_train, y_test = train_test_split(df.to_numpy(), df["ACTIVE"], test_size = 0.2)
-X_train, X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size = 0.2)
-
 # train
-train_df = pd.DataFrame(index = np.arange(X_train.shape[0]), columns = df.columns)
-train_df.loc[:, :] = X_train
+train_df = pd.read_csv('assignment4/out/training.csv')
 df_l = get_lipinski(train_df)
+
 df_l.to_csv('assignment4/data/train_lipinski.csv', index = False)
 
 # test
-test_df = pd.DataFrame(index = np.arange(X_test.shape[0]), columns = df.columns)
-test_df.loc[:, :] = X_test
+test_df = pd.read_csv('assignment4/out/test.csv')
 df_l = get_lipinski(test_df)
 df_l.to_csv('assignment4/data/test_lipinski.csv', index = False)
 
 # validation
-val_df = pd.DataFrame(index = np.arange(X_validation.shape[0]), columns = df.columns)
-val_df.loc[:, :] = X_validation
+val_df = pd.read_csv('assignment4/out/validation.csv')
 df_l = get_lipinski(val_df)
 df_l.to_csv('assignment4/data/validation_lipinski.csv', index = False)

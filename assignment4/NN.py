@@ -49,6 +49,6 @@ class OneLayerNN(object):
 
     def predict(self, toPredict):
 
-        print("Predicted data based on trained weights: ")
-        print("Input (scaled): \n" + str(toPredict))
-        print("Output: \n" + str(self.forward(toPredict)))
+        # print("Predicted data based on trained weights: ")
+        # print("Input (scaled): \n" + str(toPredict))
+        print("Output unique: \n" + str(np.unique(self.forward(toPredict))))
